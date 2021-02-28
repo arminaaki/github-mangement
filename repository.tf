@@ -108,10 +108,14 @@ resource "github_repository" "public" {
   name        = each.key
   description = each.value.description
 
-  has_downloads        = true
-  has_issues           = true
-  has_projects         = true
-  has_wiki             = true
-  vulnerability_alerts = true
-  visibility           = "public"
+
+  archive_on_destroy     = true
+  delete_branch_on_merge = true
+  auto_init              = true
+  has_downloads          = true
+  has_issues             = true
+  has_projects           = true
+  has_wiki               = true
+  vulnerability_alerts   = true
+  visibility             = "public"
 }
