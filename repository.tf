@@ -3,9 +3,6 @@ locals {
     "0mq-tutorial" : {
       description = "Introduction to ZeroMQ"
     }
-    "ansible-role-filebeat" : {
-      description = "Ansible Role - Filebeat for ELK stack"
-    }
     "Buffer_overflow" : {
       description = "Example of Buffer Overflow"
 
@@ -78,20 +75,8 @@ locals {
       description = "Learning React"
 
     }
-    "ruby" : {
-      description = "The Ruby Programming Language"
-
-    }
-    "ruby-saml" : {
-      description = "SAML SSO for Ruby"
-
-    }
     "terraform-provider-pastebin" : {
       description = "Terrafrom Pastebin API"
-
-    }
-    "vault-cookbook" : {
-      description = "Application cookbook for installing and configuring Vault."
 
     }
     "weighted-interval-schedulling" : {
