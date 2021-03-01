@@ -1,5 +1,3 @@
-
-
 resource "github_repository" "this" {
   topics = ["repo-managed-by-terraform"]
 
@@ -18,8 +16,7 @@ resource "github_repository" "this" {
   visibility             = "public"
 }
 
-
-# resource "github_branch_protection" "default" {
-#   repository = github_repository.public.name
-#   branch = github_repository.public.default_branch
-# }
+resource "github_branch_protection" "default" {
+  repository_id = github_repository.this.id
+  pattern = github_repository.this.default_branch
+}
