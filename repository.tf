@@ -86,21 +86,9 @@ locals {
   }
 }
 
-resource "github_repository" "public" {
+module "public_repositories" {
   for_each = local.public_repositories
-  topics   = ["repo-managed-by-terraform"]
-
+  source = "./modules/repositories"
   name        = each.key
   description = each.value.description
-
-
-  archive_on_destroy     = true
-  delete_branch_on_merge = true
-  auto_init              = true
-  has_downloads          = true
-  has_issues             = true
-  has_projects           = true
-  has_wiki               = true
-  vulnerability_alerts   = true
-  visibility             = "public"
 }
