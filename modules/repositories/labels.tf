@@ -1,4 +1,5 @@
 resource "github_issue_label" "feature_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "FEATURE"
   color       = "4a148c"
@@ -6,6 +7,7 @@ resource "github_issue_label" "feature_label" {
 }
 
 resource "github_issue_label" "fix_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "FIX"
   color       = "4a148c"
@@ -13,6 +15,7 @@ resource "github_issue_label" "fix_label" {
 }
 
 resource "github_issue_label" "breaking_change_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "BREAKING CHANGE"
   color       = "4a148c"
@@ -20,6 +23,7 @@ resource "github_issue_label" "breaking_change_label" {
 }
 
 resource "github_issue_label" "bug_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "BUG"
   color       = "b71c1c"
@@ -27,6 +31,7 @@ resource "github_issue_label" "bug_label" {
 }
 
 resource "github_issue_label" "postmortem_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "POSTMORTEM"
   color       = "b71c1c"
@@ -34,6 +39,7 @@ resource "github_issue_label" "postmortem_label" {
 }
 
 resource "github_issue_label" "proposal_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "PROPOSAL"
   color       = "0d47a1"
@@ -41,20 +47,16 @@ resource "github_issue_label" "proposal_label" {
 }
 
 resource "github_issue_label" "feature_request_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "FEATURE REQUEST"
   color       = "0d47a1"
   description = "Planning Document: FEATURE REQUEST"
 }
 
-resource "github_issue_label" "circle_ci_label" {
-  repository  = github_repository.this.name
-  name        = "CIRCLE CI"
-  color       = "1b5e20"
-  description = "Language/Tool: CIRCLE CI"
-}
 
 resource "github_issue_label" "golang_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "GOLANG"
   color       = "1b5e20"
@@ -62,6 +64,7 @@ resource "github_issue_label" "golang_label" {
 }
 
 resource "github_issue_label" "terraform_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "TERRAFORM"
   color       = "1b5e20"
@@ -69,6 +72,7 @@ resource "github_issue_label" "terraform_label" {
 }
 
 resource "github_issue_label" "ruby_label" {
+  count = var.create_issue_labels ? 1 : 0
   repository  = github_repository.this.name
   name        = "RUBY"
   color       = "1b5e20"

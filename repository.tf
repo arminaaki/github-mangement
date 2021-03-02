@@ -1,5 +1,5 @@
 locals {
-  public_repositories = {
+  legacy_public_repositories = {
     "0mq-tutorial" : {
       description = "Introduction to ZeroMQ"
     }
@@ -15,7 +15,8 @@ locals {
     "Data-structures-and-algorithm" : {}
     "dockerized-applications" : {}
     "github-mangement" : {
-      description = "Managing Github Repositories"
+      description         = "Managing Github Repositories"
+      create_issue_labels = true
 
     }
     "go-pomodoro" : {
@@ -27,7 +28,8 @@ locals {
 
     }
     "gopastebin" : {
-      description = "Pastebin GO API client"
+      description         = "Pastebin GO API client"
+      create_issue_labels = true
 
     }
     "gopsutil" : {
@@ -57,19 +59,22 @@ locals {
     }
     "react101" : {}
     "terraform-provider-pastebin" : {
-      description = "Terrafrom Pastebin API"
-
+      description         = "Terrafrom Pastebin API"
+      create_issue_labels = true
     }
     "weighted-interval-schedulling" : {
       description = "Design and implement a dynamic programming algorithm whose worst-case running time is O(n log n)"
 
     }
   }
+
+  public_repositories = {}
 }
 
 module "public_repositories" {
-  for_each    = local.public_repositories
-  source      = "./modules/repositories"
-  name        = each.key
-  description = lookup(each.value, "description", "This is ${each.key} repository")
+  for_each            = merge(local.legacy_public_repositories, local.public_repositories)
+  source              = "./modules/repositories"
+  name                = each.key
+  description         = lookup(each.value, "description", "This is ${each.key} repository")
+  create_issue_labels = lookup(each.value, "create_issue_labels", false)
 }
