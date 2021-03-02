@@ -11,18 +11,9 @@ locals {
       description = "Implement tokenizer, scanner, and parser for a simple calculator"
 
     }
-    "Compilers" : {
-      description = "Compilers"
-
-    }
-    "Data-structures-and-algorithm" : {
-      description = "Data Structures and Algorithm"
-
-    }
-    "dockerized-applications" : {
-      description = "Dockerized Applications"
-
-    }
+    "Compilers" : {}
+    "Data-structures-and-algorithm" : {}
+    "dockerized-applications" : {}
     "github-mangement" : {
       description = "Managing Github Repositories"
 
@@ -51,30 +42,20 @@ locals {
       description = "A minimalist blog theme for hugo."
 
     }
-    "LearnGolang" : {
-      description = "Learn golang"
-
-    }
-    "learning-k8s" : {
-      description = "Learning Kubernetes"
-
-    }
+    "LearnGolang" : {}
+    "learning-k8s" : {}
     "macos-tools" : {
       description = "Utilities for MacOS"
 
     }
     "netdiscover" : {
       description = "netdiscover"
-
     }
     "packer-builder-arm-image" : {
       description = "Packer plugin for ARM images"
 
     }
-    "react101" : {
-      description = "Learning React"
-
-    }
+    "react101" : {}
     "terraform-provider-pastebin" : {
       description = "Terrafrom Pastebin API"
 
@@ -87,8 +68,8 @@ locals {
 }
 
 module "public_repositories" {
-  for_each = local.public_repositories
-  source = "./modules/repositories"
+  for_each    = local.public_repositories
+  source      = "./modules/repositories"
   name        = each.key
-  description = each.value.description
+  description = lookup(each.value, "description", "This is ${each.key} repository")
 }
